@@ -5,10 +5,13 @@ import java.util.List;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.io.IOException;
 
 public class StageReader {
-  public static Stage readStage(String path) throws IOException {
+
+  public static Stage readStage(String path) {
     Stage stage = new Stage();
+    try {
     Properties props = (new Properties());
     props.load(new FileInputStream(path));
     for(String key: props.stringPropertyNames()) {
@@ -23,7 +26,7 @@ public class StageReader {
         cellsInQuestion.add(stage.grid.cellAtColRow(col, row));
       } else {
         System.out.println("no match " + key);
-      }
+      } 
       for(Cell c: cellsInQuestion) {
         if(value.equals("cat")) {
           stage.actors.add(new Cat(c));
@@ -35,5 +38,9 @@ public class StageReader {
       }
     }
     return stage;
+  } catch (IOException e) {
+    System.out.println(e);
+    return stage;
   }
+}
 }

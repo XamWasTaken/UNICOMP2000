@@ -14,12 +14,8 @@ public class Main extends JFrame {
     class Canvas extends JPanel {
       Stage stage;
       public Canvas() {
-        try {
         setPreferredSize(new Dimension(720, 720));
         stage = StageReader.readStage("data/stage11.rvb");
-        } catch(IOException e) {
-          System.out.println("catching IOExpection error");
-        }
       }
 
       @Override
