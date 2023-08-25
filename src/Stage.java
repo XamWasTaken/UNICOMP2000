@@ -1,6 +1,8 @@
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Optional;
+import java.awt.Color;
 
 public class Stage {
   Grid grid;
@@ -25,5 +27,16 @@ public class Stage {
     for (Actor a : actors) {
       a.paint(g);
     }
+
+    String cDisplay = "";
+    Optional<Cell> mouseOverCell = grid.cellAtPoint(mouseLoc);
+    if (mouseOverCell.isPresent()) {
+      cDisplay = mouseOverCell.get().toString();
+    } else {
+      cDisplay = "Cursor is not over a cell";
+    }
+
+    g.setColor(Color.black);
+    g.drawString(cDisplay, 760, 50);
   }
 }
