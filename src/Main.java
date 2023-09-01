@@ -1,6 +1,5 @@
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
