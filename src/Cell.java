@@ -5,17 +5,13 @@ import java.awt.Rectangle;
 
 public class Cell extends Rectangle {
   static int size = 35;
-  char col;
-  int row;
 
-  public Cell(char inCol, int inRow, int x, int y) {
+  public Cell(int x, int y) {
     super(x, y, size, size);
-    col = inCol;
-    row = inRow;
   }
 
   public void paint(Graphics g, Point mousePos) {
-    if(contains(mousePos)) {
+    if (contains(mousePos)) {
       g.setColor(Color.GRAY);
     } else {
       g.setColor(Color.WHITE);
@@ -27,7 +23,7 @@ public class Cell extends Rectangle {
 
   @Override
   public boolean contains(Point p) {
-    if(p != null) {
+    if (p != null) {
       return super.contains(p);
     } else {
       return false;
